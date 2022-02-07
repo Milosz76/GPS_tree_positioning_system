@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new the new tree</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+                    integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+</head>
+<body>
+
+<form th:action="@{/addtree}" method="post" th:object="${newTree}">
+    <label><i>Name of the tree:</i></label>
+    <p>Tree Name:</p>
+    <div>
+        <label><b>Name of the Tree:</b>
+            <select name="treeNames" th:field="*{treeNames}">
+                <option th:each="treeNames : ${T(com.mvc.treeapp.model.entity.TreeNames).values()}"
+                        th:value="${treeNames}"
+                        th:text="${treeNames.displayTree}">
+                </option>
+            </select>
+        </label>
+    </div>
+    <div>
+        <p style="line-height: 1cm"></p>
+        <label><i>Approximately the age of the tree:</i></label>
+    <p>Age: <input type="text" th:field="*{age}"/></p>
+    </div>
+        <label><i>A type of the tree:</i></label>
+        <p>A tree type:</p>
+    <div>
+        <label class="treeType-label"><b>Type of the Tree:</b>
+            <select name="treeTypes" th:field="*{treeTypes}">
+                <option th:each="treeTypes : ${T(com.mvc.treeapp.model.entity.TreeTypes).values()}"
+                        th:value="${treeTypes}"
+                        th:text="${treeTypes.displayTypes}">
+                </option>
+            </select>
+        </label>
+    </div>
+    <div>
+    <p style="line-height: 1cm"></p>
+        <label><i>Device ID (required*):</i></label>
+        <p>Device ID: <input type="text" th:field="*{deviceID}" required/></p>
+    </div>
+    <div>
+        <label><i>Latitude (required*):</i></label>
+        <p>Latitude: <input type="text" th:field="*{latitude}" required/></p>
+    </div>
+    <div>
+        <label><i>Longitude (required*):</i></label>
+        <p>Longitude: <input type="text" th:field="*{longitude}" required/></p>
+    </div>
+    <div>
+        <p><input type="submit" value="Submit"/></p>
+     <p><input type="reset" value="Reset"/></p>
+    </div>
+</form>
+<form th:action="@{/index}">
+    <button type="submit">Back</button>
+</form>
+</body>
+</html>

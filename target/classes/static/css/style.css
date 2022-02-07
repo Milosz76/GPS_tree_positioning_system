@@ -1,0 +1,14 @@
+h1 {
+    color: crimson;
+}
+
+form {
+  margin:100px;
+  padding: 0 5px;
+  background: #F5F5F5;
+}
+
+button {
+  top : 40px;
+  right : 100px;
+}
